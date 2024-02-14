@@ -6,8 +6,8 @@
 #include "Polynomial.h"
 // -------------------------------------------------------------------------
 typedef double TScalar;
-typedef Polynomial< TScalar > TPolynomial;
-typedef std::vector< TPolynomial > TPolynomials;
+typedef Polynomial< TScalar > TPolynomial; // TPolynomial es un Polinomio de tipo Tscalar
+typedef std::vector< TPolynomial > TPolynomials; // TPolynomialS es un vector de polinomios
 
 // -------------------------------------------------------------------------
 int main( int argc, char* argv[] )
@@ -42,7 +42,7 @@ int main( int argc, char* argv[] )
   for( unsigned int p = 0; p < nPolys; ++p )
   {
     // Create empty polynomial
-    polys.push_back( TPolynomial( ) );
+    polys.push_back( TPolynomial( ) ); //Empty Polynomial enters into the array of polynomials
 
     // Read line
     std::getline( input, input_line );
@@ -56,16 +56,16 @@ int main( int argc, char* argv[] )
     {
       unsigned int degree = std::atoi( token.c_str() );
       tokens >> token;
-      TScalar coefficient = std::atof( token.c_str( ) );
+      TScalar coefficient = std::atof( token.c_str( ) ); // Create a TScalar to store the coefficient in double
 
       // Update polynomial
-      polys[ p ].SetCoefficient( degree, coefficient );
+      polys[ p ].SetCoefficient( degree, coefficient ); //  uses the function setCoefficient to ad the coefficient and degree
 
     } // elihw
     std::cout << "Input " << p << " = " << polys[ p ] << std::endl;
 
   } // rof
-
+  
   // Execute desired operations
   bool stop = false;
   while( std::getline( input, input_line ) && !stop )
@@ -85,9 +85,14 @@ int main( int argc, char* argv[] )
       {
         unsigned int a_id, b_id;
         tokens >> a_id >> b_id;
-        std::cout
-          << "Add (" << a_id << ", " << b_id << ") = "
-          << ( polys[ a_id ] + polys[ b_id ] ) << std::endl;
+        std::cout << "Add (" << a_id << ", " << b_id << ") = ";
+    //    std::cout << polys[a_id] << polys[b_id] << std::endl;
+     
+        std::cout << polys[a_id].operator+(polys[b_id]) <<std::endl;
+        
+        
+      // Aqui esta el segmentation fault:
+      //  std::cout << ( polys[ a_id ] + polys[ b_id ] ) << std::endl;
       }
       break;
       case 'M':

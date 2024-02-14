@@ -39,9 +39,10 @@ public:
 
   void SetCoefficient( unsigned int degree, const S& coefficient );
 
-  Polynomial< S >& operator+( const Polynomial< S >& right ) const;
+  Polynomial< S > operator+( const Polynomial< S >& right ) const;
   Polynomial< S >& operator*( const Polynomial< S >& right ) const;
   S operator()( const S& x ) const;
+  S getCoeff( int coef ) const;
 };
 
 #include "Polynomial.hxx"
