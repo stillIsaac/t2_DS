@@ -1,6 +1,6 @@
 #ifndef __POLYNOMIAL__HXX__
 #define __POLYNOMIAL__HXX__
-
+#include <cmath>
 // -------------------------------------------------------------------------
 template< class S > 
 Polynomial< S >::
@@ -63,8 +63,7 @@ operator+( const Polynomial< S >& right ) const
       }
     }
   }
-   //polys[ p ].SetCoefficient( degree, coefficient ); 
- // std::cout << result << std::endl;
+
   return( result );
 }
 
@@ -86,9 +85,12 @@ template< class S >
 S Polynomial< S >::
 operator()( const S& x ) const
 {
-  S result = S( 0 );
 
-  // TODO #3
+  S result = S( 0 );
+  for(int i = this->size()-1; i >= 0; i--) {
+     
+      result = result + (pow(x, i)*this->getCoeff(i));  
+    }
 
   return( result );
 }
@@ -98,10 +100,8 @@ template< class S >
 S Polynomial< S >::
 getCoeff( int coef) const
 {
-  return (*this)[coef];
- 
-  // TODO #3
 
+  return (*this)[coef];
 }
 
 #endif // __POLYNOMIAL__HXX__

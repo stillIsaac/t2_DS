@@ -81,28 +81,27 @@ int main( int argc, char* argv[] )
     {
       switch( type )
       {
+
       case 'A':
       {
+
         unsigned int a_id, b_id;
         tokens >> a_id >> b_id;
         std::cout << "Add (" << a_id << ", " << b_id << ") = ";
-    //    std::cout << polys[a_id] << polys[b_id] << std::endl;
-     
-        std::cout << polys[a_id].operator+(polys[b_id]) <<std::endl;
-        
-        
-      // Aqui esta el segmentation fault:
-      //  std::cout << ( polys[ a_id ] + polys[ b_id ] ) << std::endl;
+        std::cout << polys[a_id].operator+(polys[b_id]) <<std::endl;    
       }
       break;
+
       case 'M':
       {
+        std::cout << "esto es multiplicacion" << std::endl;
+/*
         unsigned int a_id, b_id;
         tokens >> a_id >> b_id;
         std::cout
           << "Multiplication (" << a_id << ", " << b_id << ") = "
           << ( polys[ a_id ] * polys[ b_id ] ) << std::endl;
-      }
+      */}
       break;
       case 'P':
       {
@@ -111,7 +110,7 @@ int main( int argc, char* argv[] )
         tokens >> id >> x;
         std::cout
           << "Polynomial (" << id << ", " << x << ") = "
-          << polys[ id ]( x ) << std::endl;
+          << polys[ id ].operator()(x) << std::endl;
       }
       break;
       default:
