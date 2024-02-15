@@ -94,14 +94,14 @@ int main( int argc, char* argv[] )
 
       case 'M':
       {
-        std::cout << "esto es multiplicacion" << std::endl;
-/*
+        // std::cout << "esto es multiplicacion" << std::endl;
+
         unsigned int a_id, b_id;
         tokens >> a_id >> b_id;
         std::cout
           << "Multiplication (" << a_id << ", " << b_id << ") = "
           << ( polys[ a_id ] * polys[ b_id ] ) << std::endl;
-      */}
+      }
       break;
       case 'P':
       {
